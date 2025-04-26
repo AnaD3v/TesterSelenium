@@ -69,7 +69,7 @@ def testar_login(url, username, password):
         if not login_button:
             raise Exception("Botão de login não encontrado")
 
-        print("✍️ Preenchendo dados e clicando")
+        print("Preenchendo dados e clicando")
         username_field.send_keys(username)
         password_field.send_keys(password)
         login_button.click()
