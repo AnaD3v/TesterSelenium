@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Testador de Login com Selenium</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body class="p-4">
+  <div class="container">
+    <h1 class="mb-4">🔐 Teste de Login</h1>
+    <form method="POST">
+
+      <!-- Campos para URL -->
+      <div id="urlInputs">
+        <div class="mb-3 input-group">
+          <input name="urls" type="url" class="form-control" placeholder="https://exemplo.com/login" required>
+          <button type="button" class="btn btn-danger" onclick="removeField(this)">🗑️</button>
+        </div>
+      </div>
+
+      <!-- Campos para Login e Senha -->
+      <div class="mb-3">
+        <input name="username" type="text" class="form-control" placeholder="Digite o login" required>
+      </div>
+      <div class="mb-3">
+        <input name="password" type="password" class="form-control" placeholder="Digite a senha" required>
+      </div>
+
+      <button type="button" class="btn btn-secondary mb-3" onclick="addField()">+ Adicionar outra URL</button><br>
+      <button type="submit" class="btn btn-primary">Testar Logins</button>
+    </form>
+
+    {% if resultados %}
+    <h2 class="mt-5">Resultados:</h2>
+    <ul class="list-group list-group-flush mt-3">
+      {% for item in resultados %}
+      <li class="list-group-item ps-0">
+        <span class="fw-semibold">{{ item.resultado.url }}</span>: {{ item.resultado.resultado }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+  <script>
+    function addField() {
+      const container = document.getElementById("urlInputs");
+      const div = document.createElement("div");
+      div.classList.add("mb-3", "input-group");
+      div.innerHTML = `
+        <input name="urls" type="url" class="form-control" placeholder="https://exemplo.com/login" required>
+        <button type="button" class="btn btn-danger" onclick="removeField(this)">🗑️</button>
+      `;
+      container.appendChild(div);
+    }
+
+    function removeField(button) {
+      const inputGroup = button.parentElement;
+      inputGroup.remove();
+    }
+  </script>
+</body>
+
+</html>
