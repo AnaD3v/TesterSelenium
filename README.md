@@ -1,4 +1,4 @@
-# 🧪 Teste Automatizado de Login com Flask + Selenium
+# 🧪 Teste Automatizado de Login em tribunais com Flask + Selenium
 
 Este projeto permite testar automaticamente o funcionamento de formulários de login em tribunais diversos. A interface web é construída com Flask, e os testes são executados com Selenium WebDriver (Chrome).
 
