@@ -11,15 +11,14 @@ def index():
         urls = request.form.getlist("urls")
         username = request.form.get("username")
         password = request.form.get("password")
-
-        # Verificando se todos os campos foram preenchidos
+        
         if not username or not password:
             return render_template(
                 "index.html", resultados=[], erro="Por favor, preencha todos os campos."
             )
 
         for url in urls:
-            if url.strip():  # Só testa URLs não vazias
+            if url.strip():
                 resultado = testar_login(
                     url.strip(), username.strip(), password.strip()
                 )
@@ -29,4 +28,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
